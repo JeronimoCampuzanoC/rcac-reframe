@@ -1,0 +1,3 @@
+name: upgrade
+description: Upgrade regression suite for Negishi.
+checks: []
