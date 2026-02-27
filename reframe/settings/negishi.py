@@ -14,7 +14,7 @@ site_configuration = {
                     'scheduler': 'slurm',
                     'launcher': 'srun',
                     'access': ['-p cpu'],
-                    'environs': ['builtin'],
+                    'environs': ['gnu', 'intel'],
                     'max_jobs': 100
                 },
                 {
@@ -23,7 +23,7 @@ site_configuration = {
                     'scheduler': 'slurm',
                     'launcher': 'srun',
                     'access': ['-p gpu'],
-                    'environs': ['builtin']
+                    'environs': ['gnu', 'gnu-cuda']
                 },
                 {
                     'name': 'highmem',
@@ -31,17 +31,30 @@ site_configuration = {
                     'scheduler': 'slurm',
                     'launcher': 'srun',
                     'access': ['-p highmem'],
-                    'environs': ['builtin']
+                    'environs': ['gnu']
                 }
             ]
         }
     ],
     'environments': [
         {
-            'name': 'builtin',
+            'name': 'gnu',
             'cc': 'gcc',
             'cxx': 'g++',
             'ftn': 'gfortran'
+        },
+        {
+            'name': 'intel',
+            'cc': 'icc',
+            'cxx': 'icpc',
+            'ftn': 'ifort'
+        },
+        {
+            'name': 'gnu-cuda',
+            'cc': 'gcc',
+            'cxx': 'g++',
+            'ftn': 'gfortran',
+            'modules': ['cuda']
         }
     ],
     'logging': [
