@@ -14,7 +14,7 @@ site_configuration = {
                     'scheduler': 'slurm',
                     'launcher': 'srun',
                     'access': ['-p cpu'],
-                    'environs': ['gnu', 'intel'],
+                    'environs': ['gnu', 'intel-oneapi'],
                     'max_jobs': 100
                 },
                 {
@@ -23,7 +23,7 @@ site_configuration = {
                     'scheduler': 'slurm',
                     'launcher': 'srun',
                     'access': ['-p gpu'],
-                    'environs': ['gnu', 'gnu-cuda']
+                    'environs': ['gnu', 'intel-oneapi', 'nvidia']
                 },
                 {
                     'name': 'highmem',
@@ -31,7 +31,7 @@ site_configuration = {
                     'scheduler': 'slurm',
                     'launcher': 'srun',
                     'access': ['-p highmem'],
-                    'environs': ['gnu']
+                    'environs': ['gnu', 'intel-oneapi']
                 }
             ]
         }
@@ -44,17 +44,18 @@ site_configuration = {
             'ftn': 'gfortran'
         },
         {
-            'name': 'intel',
-            'cc': 'icc',
-            'cxx': 'icpc',
-            'ftn': 'ifort'
+            'name': 'intel-oneapi',
+            'cc': 'icx',
+            'cxx': 'icpx',
+            'ftn': 'ifx',
+            'modules': ['intel-oneapi']
         },
         {
-            'name': 'gnu-cuda',
-            'cc': 'gcc',
-            'cxx': 'g++',
-            'ftn': 'gfortran',
-            'modules': ['cuda']
+            'name': 'nvidia',
+            'cc': 'nvc',
+            'cxx': 'nvc++',
+            'ftn': 'nvfortran',
+            'modules': ['nvhpc']
         }
     ],
     'logging': [
