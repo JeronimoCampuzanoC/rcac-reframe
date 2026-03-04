@@ -37,6 +37,7 @@ reframe.log
 output/
 stage/
 reports/
+perflogs/
 slurm-*.out
 
 # ---- Project local runtime state ----
