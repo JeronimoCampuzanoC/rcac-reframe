@@ -8,13 +8,47 @@ This repository contains the implementation and automation of **ReFrame**, a spe
 
 The project is organized into modular components for CLI management, data tracking, and ReFrame-specific logic:
 
-* **`cli/`**: Command-line application modules, including entrypoints, configuration, reporting, and runners.
-* **`reframe/`**: The core testing logic.
-    * **`settings/`**: System configuration profiles (e.g., Slurm configuration).
-    * **`suites/`**: YAML definitions for different run types like nightly, weekly, or cluster upgrades.
-    * **`tests/`**: Categorized test implementations:
-        * **`sanity/`**: "Smoke" tests for filesystem availability, environment integrity, and basic connectivity.
-        * **`performance/`**: Benchmarks for DRAM (STREAM), CPU (HPL), and Interconnect (OSU).
-        * **`regression/`**: Specialized checks to prevent the recurrence of known issues.
-* **`data/artifacts/`**: Storage for test run results and diagnostic logs.
-* **`docs/`**: Detailed usage guides and project documentation.
+- **`cli/`**: Command-line application modules, including entrypoints, configuration, reporting, and runners.
+- **`reframe/`**: The core testing logic.
+  - **`settings/`**: System configuration profiles (e.g., Slurm configuration).
+  - **`suites/`**: YAML definitions for different run types like nightly, weekly, or cluster upgrades.
+  - **`tests/`**: Categorized test implementations:
+    - **`sanity/`**: "Smoke" tests for filesystem availability, environment integrity, and basic connectivity.
+    - **`performance/`**: Benchmarks for DRAM (STREAM), CPU (HPL), and Interconnect (OSU).
+    - **`regression/`**: Specialized checks to prevent the recurrence of known issues.
+- **`data/artifacts/`**: Storage for test run results and diagnostic logs.
+- **`docs/`**: Detailed usage guides and project documentation.
+
+---
+
+## Installation
+
+Conda was used to install ReFrame. We created a Conda environment called `reframe-env` with Python `3.10.19`, due to dependencies that are not available in the default Python module on Negishi.
+
+Activate your Conda environment first, then run:
+
+```bash
+pushd /path/to/install/prefix
+git clone -q --depth 1 --branch VERSION_TAG https://github.com/reframe-hpc/reframe.git
+pushd reframe && ./bootstrap.sh && popd
+export PATH=$(pwd)/bin:$PATH
+popd
+```
+
+To make this persistent on each shell start:
+
+```bash
+nano ~/.bashrc
+```
+
+Add:
+
+```bash
+export PATH=/home/jcampuz/reframeImpl/reframe/bin:$PATH
+```
+
+Then reload:
+
+```bash
+source ~/.bashrc
+```
