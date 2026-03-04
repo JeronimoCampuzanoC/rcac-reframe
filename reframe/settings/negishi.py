@@ -48,7 +48,7 @@ site_configuration = {
             'cc': 'icx',
             'cxx': 'icpx',
             'ftn': 'ifx',
-            'modules': ['intel-oneapi']
+            'modules': ['intel-oneapi-compilers/2023.0.0']
         },
         {
             'name': 'nvidia',
