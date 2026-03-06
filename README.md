@@ -2,6 +2,12 @@
 
 This repository contains the implementation and automation of **ReFrame**, a specialized regression testing framework, for the **Negishi cluster**. The project transitions manual system checks into a suite of automated, reproducible Python-based tests to ensure system stability and performance reliability.
 
+## Tool Versions
+
+- ReFrame: `4.10.0-dev.1+998bf083`
+- Conda: `25.3.1`
+- Python: `3.10.19`
+
 ---
 
 ## 📂 Repository Structure
@@ -25,11 +31,19 @@ The project is organized into modular components for CLI management, data tracki
 
 Conda was used to install ReFrame. We created a Conda environment called `reframe-env` with Python `3.10.19`, due to dependencies that are not available in the default Python module on Negishi.
 
-Activate your Conda environment first, then run:
+Load Conda, create the environment, and activate it:
+
+```bash
+module load conda
+conda create -n reframe-env python=3.10.19 -y
+conda activate reframe-env
+```
+
+Then run:
 
 ```bash
 pushd /path/to/install/prefix
-git clone -q --depth 1 --branch VERSION_TAG https://github.com/reframe-hpc/reframe.git
+git clone -q --depth 1 --branch 4.10.0-dev.1+998bf083 https://github.com/reframe-hpc/reframe.git
 pushd reframe && ./bootstrap.sh && popd
 export PATH=$(pwd)/bin:$PATH
 popd
