@@ -6,6 +6,9 @@ from reframe.core.builtins import run_before, sanity_function
 @rfm.simple_test
 class PartitionSanityTest(rfm.RunOnlyRegressionTest):
     descr = 'Basic partition sanity check on Negishi'
+    maintainers = ['JeronimoCampuzanoC']
+    tags = {'sanity', 'smoke'}
+    
     valid_systems = ['negishi:cpu', 'negishi:gpu', 'negishi:highmem']
     valid_prog_environs = ['*']
     executable = 'hostname'
@@ -28,5 +31,4 @@ class PartitionSanityTest(rfm.RunOnlyRegressionTest):
     def assert_hostname_output(self):
         return sn.assert_found(r'\S+', self.stdout)
 
-    maintainers = ['JeronimoCampuzanoC']
-    tags = {'sanity', 'smoke'}
+    
